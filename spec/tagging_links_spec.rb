@@ -6,6 +6,7 @@ feature 'adding tags to links' do
     fill_in('tag', :with => 'Browsers')
     click_button("Create link")
     visit '/links'
-    expect(page).to have_content("Browsers")
+    link = Link.first
+    expect(link.tags.map(&:tag)).to include('Browsers')
   end
 end
