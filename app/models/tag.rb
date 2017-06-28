@@ -1,8 +1,7 @@
 class Tag
+  include DataMapper::Resource
 
-include DataMapper::Resource
-
-property :id, Serial
-property :tag, String
+  property :id, Serial
+  property :tag, String
 
 end
