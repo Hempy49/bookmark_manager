@@ -23,6 +23,7 @@ require 'rspec'
 require 'database_cleaner'
 require './app/data_mapper_setup'
 require './app/models/tag'
+require 'web_helpers'
 
 
 Capybara.app = BookmarkManager
