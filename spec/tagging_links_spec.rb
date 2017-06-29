@@ -9,6 +9,16 @@ feature 'adding tags to links' do
     link = Link.first
     expect(link.tags.map(&:name)).to include('Browsers')
   end
+  scenario 'adding multiple tags' do
+    visit '/links/new'
+    fill_in('url', :with => 'http://www.google.com')
+    fill_in('title', :with => 'Google')
+    fill_in('tag', :with => 'Browsers search')
+    click_button("Create link")
+    visit '/links'
+    link = Link.first
+    expect(link.tags.map(&:name)).to include('Browsers','search')
+  end
 end
 
 feature 'filter links by tag' do
