@@ -8,6 +8,8 @@ feature 'signing up' do
   end
 
   scenario 'password confirmation' do
-    expect { wrong_sign_up }.to change(User, :count).by(0)
+    expect { sign_up(password_confirmation: 'wrong') }.to change(User, :count).by(0)
+    expect(current_path).to eq  '/users/new'
+    expect(page).to have_content 'Password confirmation does not match'
   end
 end
