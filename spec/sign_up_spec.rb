@@ -12,4 +12,13 @@ feature 'signing up' do
     expect(current_path).to eq  '/users/new'
     expect(page).to have_content 'Password confirmation does not match'
   end
+
+  scenario "user can't sign up without entering email address" do
+    expect { sign_up(email: "")}.to change(User, :count).by(0)
+  end
+
+  scenario "user must enter valid email address" do
+    expect { sign_up(email: "hempy")}.to change(User, :count).by(0) 
+  end
+
 end
