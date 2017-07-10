@@ -5,7 +5,7 @@ feature 'signing in' do
                 password_confirmation: 'password')
   end
 
-  scenario 'user can sign in' do
+  scenario 'User can sign in' do
     sign_in
     expect(page).to have_content "mail@mail.com"
   end
